@@ -1,0 +1,129 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(date 1570701044477)
++++ pom.xml	(date 1570701044477)
+@@ -0,0 +1,75 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++
++  <groupId>com.zheldubovskiy</groupId>
++  <artifactId>sort</artifactId>
++  <version>1.0-SNAPSHOT</version>
++
++  <name>sort</name>
++  <!-- FIXME change it to the project's website -->
++  <url>http://www.example.com</url>
++
++  <properties>
++    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    <maven.compiler.source>1.7</maven.compiler.source>
++    <maven.compiler.target>1.7</maven.compiler.target>
++  </properties>
++
++  <dependencies>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>4.11</version>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++
++  <build>
++    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
++      <plugins>
++        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
++        <plugin>
++          <artifactId>maven-clean-plugin</artifactId>
++          <version>3.1.0</version>
++        </plugin>
++        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
++        <plugin>
++          <artifactId>maven-resources-plugin</artifactId>
++          <version>3.0.2</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-compiler-plugin</artifactId>
++          <version>3.8.0</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <version>2.22.1</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-jar-plugin</artifactId>
++          <version>3.0.2</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-install-plugin</artifactId>
++          <version>2.5.2</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-deploy-plugin</artifactId>
++          <version>2.8.2</version>
++        </plugin>
++        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
++        <plugin>
++          <artifactId>maven-site-plugin</artifactId>
++          <version>3.7.1</version>
++        </plugin>
++        <plugin>
++          <artifactId>maven-project-info-reports-plugin</artifactId>
++          <version>3.0.0</version>
++        </plugin>
++      </plugins>
++    </pluginManagement>
++  </build>
++</project>
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(date 1570704313136)
++++ .gitignore	(date 1570704313136)
+@@ -0,0 +1,2 @@
++# Project exclude paths
++/target/
+\ No newline at end of file
+Index: src/main/java/com/zheldubovskiy/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/zheldubovskiy/Main.java	(date 1570703663001)
++++ src/main/java/com/zheldubovskiy/Main.java	(date 1570703663001)
+@@ -0,0 +1,27 @@
++package com.zheldubovskiy;
++
++import java.util.Arrays;
++
++public class Main {
++    public static void main(String[] args) {
++        int[] array = {3,1,5,4,2};
++        System.out.println("Array = " + Arrays.toString(array));
++       sort(array);
++    }
++    public static void sort(int[]arrayToSort) {
++        int indexMin;
++        for (int index = 0; index < arrayToSort.length - 1; index++){
++            indexMin = index;
++            for (int indexToScan = index; indexToScan < arrayToSort.length; indexToScan++){
++                if (arrayToSort[indexMin] > arrayToSort[indexToScan]){
++                    indexMin = indexToScan;
++                }
++            }
++            int temp = arrayToSort[index];
++            arrayToSort[index] = arrayToSort[indexMin];
++            arrayToSort[indexMin] = temp;
++        }
++        System.out.println("Array to sort = " + Arrays.toString(arrayToSort));
++    }
++
++}
